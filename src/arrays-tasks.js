@@ -42,8 +42,25 @@ function getIntervalArray(start, end) {
  *    sumArrays([10, 20, 30], [5, 10, 15]) => [15, 30, 45]
  *    sumArrays([-1, 0, 1], [1, 2, 3, 4]) => [0, 2, 4, 4]
  */
-function sumArrays(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function sumArrays(arr1, arr2) {
+  let result;
+  if (arr1.length >= arr2.length) {
+    result = arr1.map((value, id) => {
+      if (arr2[id] === undefined) {
+        return value + 0;
+      }
+      return value + arr2[id];
+    });
+  }
+  if (arr1.length < arr2.length) {
+    result = arr2.map((value, id) => {
+      if (arr1[id] === undefined) {
+        return value + 0;
+      }
+      return value + arr1[id];
+    });
+  }
+  return result;
 }
 
 /**
