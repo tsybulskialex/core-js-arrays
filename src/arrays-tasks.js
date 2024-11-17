@@ -371,8 +371,11 @@ function createChunks(/* arr, chunkSize */) {
  *    generateOdds(2) => [ 1, 3 ]
  *    generateOdds(5) => [ 1, 3, 5, 7, 9 ]
  */
-function generateOdds(/* len */) {
-  throw new Error('Not implemented');
+function generateOdds(len) {
+  const arr = Array(len * 2).fill(1);
+  const result = arr.map((item, id) => item + id);
+  const finish = result.filter((item) => item % 2 !== 0);
+  return finish;
 }
 
 /**
@@ -403,8 +406,15 @@ function getElementByIndices(/* arr, indices */) {
  *  getFalsyValuesCount([ -1, 'false', null, 0 ]) => 2
  *  getFalsyValuesCount([ null, undefined, NaN, false, 0, '' ]) => 6
  */
-function getFalsyValuesCount(/* arr */) {
-  throw new Error('Not implemented');
+function getFalsyValuesCount(arr) {
+  const total = arr.filter((element) => {
+    let count = 0;
+    if (Boolean(element) === false) {
+      count += 1;
+    }
+    return count;
+  });
+  return total.length;
 }
 
 /**
