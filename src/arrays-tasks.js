@@ -405,8 +405,21 @@ function generateOdds(len) {
  *   getElementByIndices(['one','two','three'], [2]) => 'three'  (arr[2])
  *   getElementByIndices([[[ 1, 2, 3]]], [ 0, 0, 1 ]) => 2        (arr[0][0][1])
  */
-function getElementByIndices(/* arr, indices */) {
-  throw new Error('Not implemented');
+function getElementByIndices(arr, indices) {
+  let num;
+  let copyArr = arr;
+  if (indices.length === 1) {
+    return copyArr[indices];
+  }
+  indices.filter((item, id) => {
+    if (id === indices.length - 1) {
+      num = copyArr[item];
+    } else {
+      copyArr = copyArr[item];
+    }
+    return num;
+  });
+  return num;
 }
 
 /**
@@ -503,8 +516,12 @@ function getHexRGBValues(/* arr */) {
  *   getMaxItems([ 10, 2, 7, 5, 3, -5 ], 3) => [ 10, 7, 5 ]
  *   getMaxItems([ 10, 10, 10, 10 ], 3) => [ 10, 10, 10 ]
  */
-function getMaxItems(/* arr, n */) {
-  throw new Error('Not implemented');
+function getMaxItems(arr, n) {
+  if (arr.length < n) {
+    return [];
+  }
+  const sortArr = arr.sort((a, b) => b - a);
+  return sortArr.slice(0, n);
 }
 
 /**
